@@ -1,0 +1,19 @@
+/* You can add global styles to this file, and also import other style files */
+/* styles.css */
+.auth-background {
+    background-color: #4e89f3;
+    background-image: url('https://static.wixstatic.com/media/dcdc65_2a7e013c0b5749379c7043f74108a431~mv2.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Estilo por defecto para el body */
+  body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+  }
