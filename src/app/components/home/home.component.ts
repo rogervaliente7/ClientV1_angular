@@ -17,6 +17,9 @@ export class HomeComponent {
   obtainData() {
     const data = JSON.stringify(this.authGoogleService.getProfile())
     console.log(data);
+
+    const token = this.authGoogleService.getGoogleToken();
+    console.log('Google Token:', token); // Show id google token
   }
 
   logOut() {

@@ -1,13 +1,24 @@
 import { Injectable } from '@angular/core';
 import { AuthConfig, OAuthService } from 'angular-oauth2-oidc';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthGoogleService {
+  private tokenSubject = new BehaviorSubject<string | null>(null);
+
   constructor(private oauthService: OAuthService) {
     if (typeof window !== 'undefined') {
       this.initLogin();
+
+      // Escuchar eventos de inicio de sesión
+      this.oauthService.events.subscribe((e) => {
+        if (e.type === 'token_received') {
+          const token = this.oauthService.getIdToken();
+          this.tokenSubject.next(token);
+        }
+      });
     }
   }
 
@@ -35,5 +46,14 @@ export class AuthGoogleService {
 
   getProfile() {
     return this.oauthService.getIdentityClaims();
+  }
+
+  getGoogleToken(): string {
+    return this.oauthService.getIdToken();
+  }
+
+  // Observable para obtener el token cuando esté listo
+  getTokenObservable(): Observable<string | null> {
+    return this.tokenSubject.asObservable();
   }
 }
