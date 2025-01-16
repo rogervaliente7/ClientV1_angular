@@ -1,19 +1,34 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ApiService {
   private apiUrl = 'http://localhost:5016/api/auth/google';
+  private apiRootUrl = 'http://localhost:5016/api/auth';
 
   constructor(private http: HttpClient) {}
 
   loginWithGoogle(token: string): Observable<any> {
-    return this.http.post(this.apiUrl, {}, { 
-      headers: { Authorization: `Bearer ${token}` }
-    });
+    return this.http.post(this.apiUrl, {}, {
+      headers: { Authorization: `Bearer ${token}` },
+    }).pipe(
+      tap(response => {
+        console.log('Respuesta recibida en ApiService:', response);
+      })
+    );
+  }
+
+  // Endpoint para login con email y password
+  loginWithEmailPassword(email: string, password: string): Observable<any> {
+    return this.http.post(`${this.apiRootUrl}/login`, { email, password }).pipe(
+      tap(response => {
+        console.log('Respuesta recibida en ApiService:', response);
+      })
+    );
   }
 }
 

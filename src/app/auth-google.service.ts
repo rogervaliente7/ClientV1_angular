@@ -16,25 +16,38 @@ export class AuthGoogleService {
       this.oauthService.events.subscribe((e) => {
         if (e.type === 'token_received') {
           const token = this.oauthService.getIdToken();
+          console.log('Token recibido del evento:', token);
+          console.log('Token emitido por BehaviorSubject:', token);
           this.tokenSubject.next(token);
         }
       });
     }
   }
 
-  initLogin() {
+  async initLogin() {
     const config: AuthConfig = {
       issuer: 'https://accounts.google.com',
       strictDiscoveryDocumentValidation: false,
       clientId: '821895625993-2mu2qafr7k1u3c0meuv5ht4chs5nfj6l.apps.googleusercontent.com',
-      redirectUri: typeof window !== 'undefined' ? window.location.origin + '/home' : '',
+      redirectUri: window.location.origin + '/login', // Redirige a /login
       scope: 'openid profile email',
     };
-
+  
     this.oauthService.configure(config);
-    this.oauthService.setupAutomaticSilentRefresh();
-    this.oauthService.loadDiscoveryDocumentAndTryLogin();
+  
+    // Espera a que se cargue el documento de descubrimiento
+    await this.oauthService.loadDiscoveryDocumentAndTryLogin();
+  
+    console.log('Documento de descubrimiento cargado y login intentado');
+  
+    // Si el usuario ya está autenticado, emite el token
+    if (this.oauthService.hasValidIdToken()) {
+      const token = this.oauthService.getIdToken();
+      console.log('Token obtenido tras cargar el documento:', token);
+      this.tokenSubject.next(token);
+    }
   }
+  
 
   login() {
     this.oauthService.initLoginFlow();
@@ -42,6 +55,7 @@ export class AuthGoogleService {
 
   logout() {
     this.oauthService.logOut();
+    this.tokenSubject.next(null);
   }
 
   getProfile() {
