@@ -4,12 +4,13 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common'; 
 import { ApiService } from '../../services/api.service';
 import { Router } from '@angular/router';
+import { RouterModule } from '@angular/router'; // Importa RouterModule
 import { NotificationService } from '../../services/notification.service';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, RouterModule],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
@@ -29,8 +30,8 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {}
 
   login(): void {
-    // console.log('Inicio de sesión con Google iniciado');
-    // this.authGoogleService.login();
+    console.log('Inicio de sesión con Google iniciado');
+    this.authGoogleService.login();
   
     // Escucha los cambios en el token
     // this.authGoogleService.getTokenObservable().subscribe({
@@ -77,11 +78,11 @@ export class LoginComponent implements OnInit {
     // Llamamos al servicio ApiService para hacer login con email y password
     this.apiService.loginWithEmailPassword(this.email, this.password).subscribe(
       (response: any) => {
-        console.log('Respuesta recibida:', response);
+        console.log('Respuesta recibida');
 
-        if (response.token) {
+        if (response.session_token) {
           // Guardar el token y el usuario en el estado de navegación
-          this.router.navigate(['/authenticating'], { state: { user: response.user, token: response.token } });
+          this.router.navigate(['/home'], { state: { user: response.user, token: response.session_token } });
         } else {
           // Si no se recibe token, mostrar error
           this.notificationService.showError('Error al iniciar sesión. Intenta nuevamente.', 'Error');

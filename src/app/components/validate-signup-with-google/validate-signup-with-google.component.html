@@ -2,33 +2,8 @@
 
 <div class="login-container">
     <div class="card shadow p-4">
-      <h3 class="text-center mb-4">Sign up</h3>
+      <h3 class="text-center mb-4">Registre su contrasena</h3>
       <form (ngSubmit)="onSubmit()">
-        <div class="mb-3">
-            <label for="nombre" class="form-label">Nombre</label>
-            <input 
-              type="nombre" 
-              class="form-control" 
-              id="nombre" 
-              placeholder="Ingrese su nombre" 
-              [(ngModel)]="nombre" 
-              name="nombre" 
-              required 
-            />
-        </div>
-
-        <div class="mb-3">
-          <label for="correo" class="form-label">correo</label>
-          <input 
-            type="correo" 
-            class="form-control" 
-            id="correo" 
-            placeholder="Enter your correo" 
-            [(ngModel)]="correo" 
-            name="correo" 
-            required 
-          />
-        </div>
         
         <div class="mb-3">
             <label for="password" class="form-label">Password</label>
@@ -53,7 +28,7 @@
         </div>
   
         <button type="submit" class="btn btn-primary w-100 mb-3" [disabled]="isLoading">
-          Register now
+          Guardar
         </button>
   
         <div *ngIf="isLoading" class="text-center mb-3">Autenticando...</div>
@@ -61,4 +36,3 @@
 
     </div>
   </div>
-  

@@ -26,7 +26,7 @@ export class AppComponent {
       filter(event => event instanceof NavigationEnd)
     ).subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        this.isAuthRoute = event.url.includes('login') || event.url.includes('signup');
+        this.isAuthRoute = event.url.includes('login') || event.url.includes('signup') || event.url.includes('auth-with-google') || event.url.includes('register-password');
       }
     });
   }

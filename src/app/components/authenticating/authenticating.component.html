@@ -1,0 +1,28 @@
+<p>authenticating works!</p>
+
+
+<div class="authenticating-container">
+    <div class="card shadow p-4">
+      <h3 class="text-center mb-4">Validar Registro</h3>
+      <p class="text-center">Hola, {{ userName }}. Por favor ingresa el código OTP enviado: <strong>{{ showOptCode }}</strong></p>
+      <form (ngSubmit)="validateSignup()">
+        <div class="mb-3">
+          <label for="optCode" class="form-label">Código OTP</label>
+          <input 
+            type="text" 
+            id="optCode" 
+            class="form-control" 
+            placeholder="Ingresa tu código OTP" 
+            [(ngModel)]="optCode" 
+            name="optCode" 
+            required 
+          />
+        </div>
+        <button type="submit" class="btn btn-primary w-100" [disabled]="isLoading">
+          Validar
+        </button>
+        <div *ngIf="isLoading" class="text-center mt-3">Validando...</div>
+      </form>
+    </div>
+</div>
+  

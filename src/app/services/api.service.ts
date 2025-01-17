@@ -30,6 +30,37 @@ export class ApiService {
       })
     );
   }
+
+  signup(nombre: string, correo: string, password: string): Observable<any> {
+    return this.http.post(`${this.apiRootUrl}/signup`, {nombre, correo, password }).pipe(
+      tap(response => {
+        console.log('Respuesta recibida en ApiService:', response);
+      })
+    );
+  }
+
+  validateSignup(jwtToken: string, optCode: string): Observable<any> {
+    const payload = { jwtToken, optCode };
+    return this.http.patch(`${this.apiRootUrl}/signup_validate`, payload).pipe(
+      tap(response => {
+        console.log('Respuesta recibida en ApiService:', response);
+      })
+    );
+  }
+
+  validateSignupWithGoogle(jwtToken: string, password: string): Observable<any> {
+    const payload = {
+      jwtToken, // Incluye el token JWT
+      password  // Incluye la contraseña
+    };
+  
+    return this.http.patch(`${this.apiRootUrl}/google/signup_validate`, payload).pipe(
+      tap(response => {
+        console.log('Respuesta al validar signup:', response);
+      })
+    );
+  }
+  
 }
 
 
