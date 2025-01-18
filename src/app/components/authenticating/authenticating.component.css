@@ -1,0 +1,20 @@
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; /* Ocupa todo el alto disponible */
+    margin: 0;
+}
+
+/* Estilo de la tarjeta de login */
+.card {
+    width: 400px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Íconos en los botones */
+button i {
+    margin-right: 8px;
+}

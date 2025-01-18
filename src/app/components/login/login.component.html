@@ -1,8 +1,4 @@
-
-
-<button type="button" class="btn btn-success" (click)="obtainData()"> Get Data</button>
-<button type="button" class="btn btn-dark" (click)="logOut()"> Log out</button>
-
+<br><br><br><br><br>
 <div class="login-container">
   <div class="card shadow p-4">
     <h3 class="text-center mb-4">Sign in</h3>
@@ -42,16 +38,14 @@
         <label class="form-check-label" for="rememberPassword">Remember password</label>
       </div>
 
-      <button type="submit" class="btn btn-primary w-100 mb-3" [disabled]="isLoading">
-        Login
-      </button>
+      <button type="submit" class="btn btn-primary w-100 mb-3" [disabled]="isLoading"><i class="fa-solid fa-right-to-bracket"></i>Login</button>
 
       <div *ngIf="isLoading" class="text-center mb-3">Autenticando...</div>
 
       <hr>
 
       <button type="button" class="btn btn-danger w-100 mb-3" (click)="login()">
-        <i class="fa fa-google"></i> Sign in with Google
+        <i class="fa-brands fa-google"></i> Sign in with Google
       </button>
 
     </form>
@@ -61,36 +55,3 @@
     </div>
   </div>
 </div>
-
-
-<!--<div class="login-container">
-    <div class="card shadow p-4">
-      <h3 class="text-center mb-4">Sign in</h3>
-      <form>
-        <div class="mb-3">
-          <label for="email" class="form-label">Email</label>
-          <input type="email" class="form-control" id="email" placeholder="Enter your email">
-        </div>
-        <div class="mb-3">
-          <label for="password" class="form-label">Password</label>
-          <input type="password" class="form-control" id="password" placeholder="Enter your password">
-        </div>
-        <div class="form-check mb-3">
-          <input class="form-check-input" type="checkbox" id="rememberPassword">
-          <label class="form-check-label" for="rememberPassword">Remember password</label>
-        </div>
-        <button type="submit" class="btn btn-primary w-100 mb-3">Login</button>
-        <hr>
-        <button type="button" class="btn btn-danger w-100 mb-3" (click)="login()">
-          <i class="bi bi-google"></i> Sign in with Google
-        </button>
-        <button type="button" class="btn btn-primary w-100 mb-3">
-          <i class="bi bi-facebook"></i> Sign in with Facebook
-        </button>
-      </form>
-      <div class="text-center mt-3">
-        <a href="/register" class="text-decoration-none">Don't have an account? Register here</a>
-      </div>
-    </div>
-</div> -->
-  
