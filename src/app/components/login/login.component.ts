@@ -32,42 +32,6 @@ export class LoginComponent implements OnInit {
   login(): void {
     console.log('Inicio de sesión con Google iniciado');
     this.authGoogleService.login();
-  
-    // Escucha los cambios en el token
-    // this.authGoogleService.getTokenObservable().subscribe({
-    //   next: (googleToken) => {
-    //     if (googleToken) {
-    //       console.log('Token de Google obtenido:', googleToken);
-  
-    //       // Enviar el token al backend
-    //       this.apiService.loginWithGoogle(googleToken).subscribe({
-    //         next: (response) => {
-    //           console.log('Respuesta del backend:', response); // Ver la respuesta cruda
-          
-    //           // Agrega un log para ver si response.valid existe y es true/false
-    //           if (response) {
-    //             console.log('¿La respuesta es válida?:', response.valid ? 'true' : 'false');
-    //           }
-          
-    //           if (response && response.valid) {
-    //             alert('Inicio de sesión exitoso');
-    //             this.router.navigate(['/home']); // Redirige solo si la respuesta es válida
-    //           } else {
-    //             alert('Token no válido. Intente nuevamente.');
-    //           }
-    //         },
-    //         error: (error) => {
-    //           console.error('Error al enviar el token al backend:', error);
-    //           alert('Error al iniciar sesión');
-    //         },
-    //       });
-          
-    //     } else {
-    //       console.error('No se pudo obtener el token de Google');
-    //     }
-    //   },
-    //   error: (err) => console.error('Error al observar el token de Google', err),
-    // });
   }
 
   onSubmit(): void {
@@ -81,10 +45,15 @@ export class LoginComponent implements OnInit {
         console.log('Respuesta recibida');
 
         if (response.session_token) {
-          // Guardar el token y el usuario en el estado de navegación
+          // Guardar el token en localStorage para mantener la sesión activa
+          localStorage.setItem('sessionToken', response.session_token);
+
+          // Guardar también el usuario si es necesario
+          localStorage.setItem('user', JSON.stringify(response.user));
           this.router.navigate(['/home'], { state: { user: response.user, token: response.session_token } });
         } else {
           // Si no se recibe token, mostrar error
+          console.log(response);
           this.notificationService.showError('Error al iniciar sesión. Intenta nuevamente.', 'Error');
         }
       },
