@@ -1,0 +1,169 @@
+/* Dashboard container */
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    background-color: #121212; /* Fondo oscuro */
+    color: white;
+    height: 100vh;
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #1f1f1f; /* Fondo oscuro */
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 50px;
+    height: auto;
+}
+
+.company-name {
+    margin-left: 10px;
+    color: #0f8e3b; /* Verde */
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+}
+
+/* Search bar */
+.search-bar {
+    padding: 8px;
+    margin-right: 20px;
+    background-color: #333; /* Fondo oscuro para el input */
+    border: 2px solid #0f8e3b; /* Borde verde */
+    border-radius: 5px;
+    color: white;
+}
+
+.page-title {
+    margin: 0;
+    margin-right: 20px;
+    font-size: 24px;
+    color: #ffffffe4; /* Título en color verde claro */
+}
+
+/* Body */
+.body {
+    display: flex;
+    flex: 1;
+    padding: 20px;
+    flex-wrap: wrap; /* Permite que los elementos se acomoden en líneas */
+}
+
+/* Sidebar */
+.sidebar {
+    width: 200px;
+    background-color: #1f1f1f; /* Fondo oscuro */
+    padding: 20px;
+    border-radius: 5px;
+    margin-right: 20px; /* Espacio entre sidebar y el contenido principal */
+}
+
+.module {
+    margin-bottom: 20px;
+    background-color: #0f8e3b; /* Fondo verde para los módulos */
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+}
+
+.module:hover {
+    background-color: #0b5f2e; /* Verde más oscuro al pasar el mouse */
+}
+
+/* Main content */
+.main-content {
+    flex: 1;
+    padding: 20px;
+    background-color: #b9d4ef; /* Azul oscuro para el fondo principal */
+    border-radius: 5px;
+}
+
+.empty-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.empty-content h2 {
+    font-size: 36px;
+    font-weight: 300;
+    color: #b0b0b0; /* Texto gris claro */
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    /* Ajuste en el header */
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .header-right {
+        margin-top: 10px;
+        justify-content: flex-start;
+        width: 100%;
+    }
+
+    .search-bar {
+        margin-right: 0;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    /* Ajuste en la disposición de la body */
+    .body {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .sidebar {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 10px; /* Separación entre sidebar y main content */
+    }
+
+    .main-content {
+        width: 100%;
+    }
+
+    /* Logo y nombre de empresa */
+    .company-name {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Ajuste de tamaño de los textos para dispositivos más pequeños */
+    .company-name {
+        font-size: 18px;
+    }
+
+    .page-title {
+        font-size: 20px;
+    }
+
+    .empty-content h2 {
+        font-size: 28px;
+    }
+
+    .search-bar {
+        padding: 6px;
+        font-size: 14px;
+    }
+}
