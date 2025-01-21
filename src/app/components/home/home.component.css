@@ -2,7 +2,7 @@
 .dashboard-container {
     display: flex;
     flex-direction: column;
-    background-color: #121212; /* Fondo oscuro */
+    background-color: #59d6d0; /* Fondo turquesa */
     color: white;
     height: 100vh;
 }
@@ -28,7 +28,7 @@
 
 .company-name {
     margin-left: 10px;
-    color: #0f8e3b; /* Verde */
+    color: #5de68d; /* Verde */
     font-size: 30px;
     font-weight: bold;
 }
@@ -65,7 +65,7 @@
 
 /* Sidebar */
 .sidebar {
-    width: 200px;
+    width: 250px;
     background-color: #1f1f1f; /* Fondo oscuro */
     padding: 20px;
     border-radius: 5px;
@@ -79,17 +79,43 @@
     border-radius: 5px;
     cursor: pointer;
     color: white;
+    transition: background-color 0.3s ease;
 }
 
 .module:hover {
     background-color: #0b5f2e; /* Verde más oscuro al pasar el mouse */
 }
 
+.module.active {
+    background-color: #0b5f2e; /* Verde más oscuro para módulo activo */
+}
+
+/* Submodules */
+.submodules {
+    margin-top: 10px;
+    margin-left: 10px;
+    padding-left: 10px;
+    border-left: 2px solid #5de68d; /* Línea verde indicando jerarquía */
+}
+
+.submodule {
+    padding: 8px;
+    background-color: #2d2d2d; /* Fondo gris oscuro */
+    border-radius: 3px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    color: #cfcfcf; /* Texto gris claro */
+}
+
+.submodule:hover {
+    background-color: #3a3a3a; /* Gris más oscuro al pasar el mouse */
+}
+
 /* Main content */
 .main-content {
     flex: 1;
     padding: 20px;
-    background-color: #b9d4ef; /* Azul oscuro para el fondo principal */
+    background-color: #b9d4ef; /* Azul claro para el fondo principal */
     border-radius: 5px;
 }
 

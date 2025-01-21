@@ -2,7 +2,7 @@
     <!-- Header -->
     <div class="header">
         <div class="logo-container">
-          <img src="https://static.wixstatic.com/media/1e540b_02e9a1c8875b4272a8dde63a878b3767~mv2.jpeg" alt="Logo" class="logo" />
+          <img src="images/logo_edited.png" alt="Logo" class="logo" />
           <h2 class="company-name">ACAVEN DE RL</h2>
         </div>
         <div class="header-right">
@@ -11,14 +11,33 @@
         </div>
     </div>
       
-  
     <!-- Body -->
     <div class="body">
+      
       <div class="sidebar">
-        <div class="module">Module 1</div>
-        <div class="module">Module 2</div>
-        <div class="module">Module 3</div>
+        <div class="module" (click)="toggleModule(1)">
+          Module 1
+          <div class="submodules" *ngIf="activeModule === 1">
+            <div class="submodule">Submodule 1.1</div>
+            <div class="submodule">Submodule 1.2</div>
+          </div>
+        </div>
+        <div class="module" (click)="toggleModule(2)">
+          Module 2
+          <div class="submodules" *ngIf="activeModule === 2">
+            <div class="submodule">Submodule 2.1</div>
+            <div class="submodule">Submodule 2.2</div>
+          </div>
+        </div>
+        <div class="module" (click)="toggleModule(3)">
+          Module 3
+          <div class="submodules" *ngIf="activeModule === 3">
+            <div class="submodule">Submodule 3.1</div>
+          </div>
+        </div>
       </div>
+      
+
       <div class="main-content">
         <div class="empty-content">
           <h2>HOME WORKS</h2>

@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { AuthGoogleService } from '../../auth-google.service';
 import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-home',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -13,6 +15,8 @@ export class HomeComponent {
       private authGoogleService: AuthGoogleService,
       private router: Router
   ) {}
+
+  activeModule: number | null = null;
 
   obtainData() {
     const data = JSON.stringify(this.authGoogleService.getProfile())
@@ -27,4 +31,8 @@ export class HomeComponent {
     this.router.navigate(['login']);
   }
 
+  toggleModule(moduleIndex: number): void {
+    // Si el módulo ya está activo, ciérralo; si no, ábrelo
+    this.activeModule = this.activeModule === moduleIndex ? null : moduleIndex;
+  }
 }
