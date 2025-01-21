@@ -2,7 +2,7 @@
 .dashboard-container {
     display: flex;
     flex-direction: column;
-    background-color: #121212; /* Fondo oscuro */
+    background-color: #1027aa;
     color: white;
     height: 100vh;
 }
@@ -13,7 +13,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    background-color: #1f1f1f; /* Fondo oscuro */
+    background-color: #1f1f1f;
 }
 
 .logo-container {
@@ -26,9 +26,14 @@
     height: auto;
 }
 
+.logo-greater {
+    width: 50px;
+    height: auto;
+}
+
 .company-name {
     margin-left: 10px;
-    color: #0f8e3b; /* Verde */
+    color: #0f8e3b;
     font-size: 30px;
     font-weight: bold;
 }
@@ -42,8 +47,8 @@
 .search-bar {
     padding: 8px;
     margin-right: 20px;
-    background-color: #333; /* Fondo oscuro para el input */
-    border: 2px solid #0f8e3b; /* Borde verde */
+    background-color: #333;
+    border: 2px solid #0f8e3b;
     border-radius: 5px;
     color: white;
 }
@@ -52,7 +57,7 @@
     margin: 0;
     margin-right: 20px;
     font-size: 24px;
-    color: #ffffffe4; /* Título en color verde claro */
+    color: #ffffffe4;
 }
 
 /* Body */
@@ -60,37 +65,129 @@
     display: flex;
     flex: 1;
     padding: 20px;
-    flex-wrap: wrap; /* Permite que los elementos se acomoden en líneas */
+    flex-wrap: wrap;
 }
 
 /* Sidebar */
 .sidebar {
-    width: 200px;
-    background-color: #1f1f1f; /* Fondo oscuro */
+    width: 260px;
+    background-color: #1f1f1f;
+    padding: 0;
+    border-radius: 5px;
+    margin-right: 20px;
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 100px);
+}
+
+.logo-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 120px;
+    background-color: #121212;
+    text-align: center;
     padding: 20px;
-    border-radius: 5px;
-    margin-right: 20px; /* Espacio entre sidebar y el contenido principal */
 }
 
-.module {
-    margin-bottom: 20px;
-    background-color: #0f8e3b; /* Fondo verde para los módulos */
-    padding: 10px;
-    border-radius: 5px;
+.logo-image {
+    width: 120px;
+    height: auto;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+/* Navigation Menu */
+.nav-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-item {
+    position: relative;
+    width: 100%;
+    margin: 2px 0;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 15px;
     cursor: pointer;
+    transition: background-color 0.3s;
     color: white;
+    text-decoration: none;
 }
 
-.module:hover {
-    background-color: #0b5f2e; /* Verde más oscuro al pasar el mouse */
+.nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.nav-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-content i {
+    width: 20px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.nav-content span {
+    font-size: 14px;
+}
+
+/* Arrow icon */
+.arrow {
+    font-size: 12px;
+    transition: transform 0.3s;
+}
+
+.arrow.rotated {
+    transform: rotate(180deg);
+}
+
+/* Submenu */
+.submenu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    background-color: rgba(0, 0, 0, 0.15);
+}
+
+.submenu.expanded {
+    max-height: 200px;
+}
+
+.submenu li a {
+    display: block;
+    padding: 10px 15px 10px 45px;
+    color: #b9b9b9;
+    text-decoration: none;
+    font-size: 13px;
+    transition: all 0.3s;
+}
+
+.submenu li a:hover {
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.05);
 }
 
 /* Main content */
 .main-content {
     flex: 1;
     padding: 20px;
-    background-color: #b9d4ef; /* Azul oscuro para el fondo principal */
+    background-color: #b9d4ef;
     border-radius: 5px;
+    min-height: calc(100vh - 140px);
 }
 
 .empty-content {
@@ -103,12 +200,11 @@
 .empty-content h2 {
     font-size: 36px;
     font-weight: 300;
-    color: #b0b0b0; /* Texto gris claro */
+    color: #333;
 }
 
-/* Responsividad */
+/* Responsive styles */
 @media (max-width: 768px) {
-    /* Ajuste en el header */
     .header {
         flex-direction: column;
         align-items: flex-start;
@@ -126,7 +222,6 @@
         margin-top: 10px;
     }
 
-    /* Ajuste en la disposición de la body */
     .body {
         flex-direction: column;
         padding: 10px;
@@ -135,21 +230,21 @@
     .sidebar {
         width: 100%;
         margin-right: 0;
-        margin-bottom: 10px; /* Separación entre sidebar y main content */
+        margin-bottom: 10px;
+        height: auto;
     }
 
     .main-content {
         width: 100%;
+        min-height: auto;
     }
 
-    /* Logo y nombre de empresa */
     .company-name {
         font-size: 20px;
     }
 }
 
 @media (max-width: 480px) {
-    /* Ajuste de tamaño de los textos para dispositivos más pequeños */
     .company-name {
         font-size: 18px;
     }

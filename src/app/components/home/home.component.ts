@@ -14,6 +14,15 @@ export class HomeComponent {
       private router: Router
   ) {}
 
+  menuItems = {
+    dashboard: false,
+    modules: false
+  };
+
+  toggleMenu(menu: string) {
+    this.menuItems[menu as keyof typeof this.menuItems] = !this.menuItems[menu as keyof typeof this.menuItems];
+  }
+
   obtainData() {
     const data = JSON.stringify(this.authGoogleService.getProfile())
     console.log(data);

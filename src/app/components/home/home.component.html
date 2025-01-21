@@ -2,7 +2,7 @@
     <!-- Header -->
     <div class="header">
         <div class="logo-container">
-          <img src="https://static.wixstatic.com/media/1e540b_02e9a1c8875b4272a8dde63a878b3767~mv2.jpeg" alt="Logo" class="logo" />
+          <img src="images/logo_edited.png" alt="Logo" class="logo" />
           <h2 class="company-name">ACAVEN DE RL</h2>
         </div>
         <div class="header-right">
@@ -13,11 +13,51 @@
       
   
     <!-- Body -->
-    <div class="body">
+    <div class="body">  
       <div class="sidebar">
-        <div class="module">Module 1</div>
-        <div class="module">Module 2</div>
-        <div class="module">Module 3</div>
+        <!-- Logo Header -->
+        <div class="logo-header">
+          <a routerLink="/" class="logo">
+            <img
+              src="images/logo_edited.png"
+              alt="Logo"
+              class="logo-image"
+            />
+          </a>
+        </div>
+      
+        <!-- Sidebar Navigation -->
+        <ul class="nav-menu">
+          <li class="nav-item">
+            <div class="nav-link" (click)="toggleMenu('dashboard')">
+              <div class="nav-content">
+                <i class="fas fa-home"></i>
+                <span>Dashboard</span>
+              </div>
+              <i class="fas fa-chevron-down arrow" [class.rotated]="menuItems.dashboard"></i>
+            </div>
+            <ul class="submenu" [class.expanded]="menuItems.dashboard">
+              <li><a routerLink="/dashboard1">Dashboard 1</a></li>
+              <li><a routerLink="/dashboard2">Dashboard 2</a></li>
+            </ul>
+          </li>
+      
+          <li class="nav-item">
+            <div class="nav-link" (click)="toggleMenu('modules')">
+              <div class="nav-content">
+                <i class="fas fa-box"></i>
+                <span>Modules</span>
+              </div>
+              <i class="fas fa-chevron-down arrow" [class.rotated]="menuItems.modules"></i>
+            </div>
+            <ul class="submenu" [class.expanded]="menuItems.modules">
+              <li><a routerLink="/module1">Module 1</a></li>
+              <li><a routerLink="/module2">Module 2</a></li>
+            </ul>
+          </li>
+        </ul>
+
+
       </div>
       <div class="main-content">
         <div class="empty-content">
@@ -26,6 +66,3 @@
       </div>
     </div>
 </div>
-
-
-
