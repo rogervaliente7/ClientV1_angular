@@ -6,17 +6,18 @@
     <p class="text-center">Hola, {{ userName }}. Por favor ingresa el código OTP enviado a su correo</p>
     <form (ngSubmit)="validateSignup()">
       <div class="mb-3">
-        <label for="optCode" class="form-label">Código OTP</label>
-        <input 
-          type="text" 
-          id="optCode" 
-          class="form-control" 
-          placeholder="Ingresa tu código OTP" 
+
+        <ng-otp-input 
           [(ngModel)]="optCode" 
-          name="optCode" 
-          required 
-        />
+          [config]="{ length: 6 }" 
+          (onInputChange)="onOtpInputChange($event)"
+          [disabled]="isLoading">
+        </ng-otp-input>
+        <div *ngIf="optCode.length < 6 && optCodeTouched" class="text-danger">
+          El código OTP debe ser de 6 dígitos numéricos.
+        </div>
       </div>
+      
       <button type="submit" class="btn btn-primary w-100" [disabled]="isLoading">
         Validar
       </button>
@@ -24,6 +25,7 @@
     </form>
   </div>
 </div>
+
  
 <!--<div class="login-container">
 <br><br><br><br><br>
