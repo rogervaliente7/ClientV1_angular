@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthGoogleService } from '../../auth-google.service';
 import { Router } from '@angular/router';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +12,8 @@ import { Router } from '@angular/router';
 export class HomeComponent {
   constructor(
       private authGoogleService: AuthGoogleService,
-      private router: Router
+      private router: Router,
+      private apiService: ApiService,
   ) {}
 
   menuItems = {
@@ -32,8 +34,21 @@ export class HomeComponent {
   }
 
   logOut() {
-    this.authGoogleService.logout();
-    this.router.navigate(['login']);
+    this.apiService.logout().subscribe({
+      next: () => {
+        // Limpia el localStorage
+        localStorage.removeItem('sessionToken');
+        localStorage.removeItem('jwtToken');
+        localStorage.removeItem('expirationTime');
+        localStorage.removeItem('user');
+        // Redirige al login
+        this.router.navigate(['login']);
+      },
+      error: (err) => {
+        console.error('Error al cerrar sesión:', err);
+        // Opcional: Manejar errores en el logout
+      }
+    });
   }
 
 }

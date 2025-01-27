@@ -31,7 +31,6 @@ export class ValidateSignupWithGoogleComponent implements OnInit {
       console.warn('localStorage no está disponible. Asegúrate de estar en el navegador.');
     }
   }
-  
 
   onSubmit(): void {
     if (!this.password) {
@@ -63,8 +62,6 @@ export class ValidateSignupWithGoogleComponent implements OnInit {
     );
   }
 }
-
-
 
 // Endpoint para login con email y password
   // loginWithEmailPassword(email: string, password: string): Observable<any> {

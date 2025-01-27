@@ -203,6 +203,20 @@
     color: #333;
 }
 
+.logout-button {
+    background-color: #ff4d4d; /* Rojo para indicar logout */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .logout-button:hover {
+    background-color: #e60000; /* Rojo más oscuro al pasar el mouse */
+  }
+
 /* Responsive styles */
 @media (max-width: 768px) {
     .header {
